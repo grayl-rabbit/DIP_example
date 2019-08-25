@@ -1,15 +1,20 @@
 package com.better.entity;/*
- *  24.08.2019
- *  bad
- *  DIPExample
+ *  25.08.2019
+ *  com.better.entity
+ *  DIP_example
  *  @author L
  */
 
+import jdk.nashorn.internal.ir.annotations.Immutable;
+import org.hibernate.annotations.DynamicUpdate;
+
 import javax.persistence.*;
 
-@Entity(name="IndentNew")
+
+@Entity(name = "Test")
 @Table(name = "indent_new")
-public class IndentNew {
+@DynamicUpdate
+public class Test {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -18,10 +23,10 @@ public class IndentNew {
     private String customerName;
     private String customerEmail;
 
-    public IndentNew() {
+    public Test() {
     }
 
-    public IndentNew(String getCustomerName, String getCustomerEmail) {
+    public Test(String getCustomerName, String getCustomerEmail) {
         this.customerName = getCustomerName;
         this.customerEmail = getCustomerEmail;
     }
@@ -35,10 +40,10 @@ public class IndentNew {
         return isValid;
     }
 
-    private void setValid() {
-        if(!customerName.equals("") && !customerEmail.equals("")){
+    public void setValid() {
+        if (!customerName.equals("") && !customerEmail.equals("")) {
             isValid = true;
-        }else{
+        } else {
             isValid = false;
         }
     }
@@ -59,3 +64,5 @@ public class IndentNew {
         this.customerEmail = customerEmail;
     }
 }
+
+
